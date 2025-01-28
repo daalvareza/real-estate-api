@@ -1,0 +1,27 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.swp
+
+# Environment and secrets
+.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# local database folder if used
+data/db/
+
+# Visual Studio Code workspace settings
+.vscode/
+
+# Rider / JetBrains project settings
+.idea/
+
+# Additional logs or coverage
+*.log
+coverage/
