@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F73AC05F-3151-429C-B2B3-2C74F2834005}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealStateApi", "src\RealStateApi.Api\RealStateApi.csproj", "{2336D9C4-9A67-4877-9640-D3D2FAA3F5DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateApi", "src\RealEstateApi.Api\RealEstateApi.csproj", "{2336D9C4-9A67-4877-9640-D3D2FAA3F5DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealStateApi.Application", "src\RealStateApi.Application\RealStateApi.Application.csproj", "{412245CB-0ABE-4DE8-AB6D-CB505A8FCC92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateApi.Application", "src\RealEstateApi.Application\RealEstateApi.Application.csproj", "{412245CB-0ABE-4DE8-AB6D-CB505A8FCC92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealStateApi.Domain", "src\RealStateApi.Domain\RealStateApi.Domain.csproj", "{58DA4EAE-5FB6-4A98-BE54-92AF260B29EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateApi.Domain", "src\RealEstateApi.Domain\RealEstateApi.Domain.csproj", "{58DA4EAE-5FB6-4A98-BE54-92AF260B29EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealStateApi.Infrastructure", "src\RealStateApi.Infrastructure\RealStateApi.Infrastructure.csproj", "{C76C7495-8F81-472E-BF4C-F66975406678}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateApi.Infrastructure", "src\RealEstateApi.Infrastructure\RealEstateApi.Infrastructure.csproj", "{C76C7495-8F81-472E-BF4C-F66975406678}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5E3209E6-755D-43A1-AF84-ABF46028069C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealStateApi.Tests", "tests\RealStateApi.Tests\RealStateApi.Tests.csproj", "{B4701FEF-7399-4DE2-A0DD-5AEB5ECB71DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateApi.Tests", "tests\RealEstateApi.Tests\RealEstateApi.Tests.csproj", "{B4701FEF-7399-4DE2-A0DD-5AEB5ECB71DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

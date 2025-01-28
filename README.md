@@ -1,4 +1,4 @@
-# Real State API
+# Real Estate API
 
 A **.NET** Web API that demonstrates CRUD operations and authentication for real estate properties and owners. Built with **C#**, **.NET**, **MongoDB**, and documented with **Swagger** (OpenAPI).
 
@@ -69,8 +69,8 @@ A **.NET** Web API that demonstrates CRUD operations and authentication for real
 1. **Clone** the repository:
 
    ```bash
-   git clone https://github.com/YourUsername/real-state-api.git
-   cd real-state-api
+   git clone https://github.com/YourUsername/real-estate-api.git
+   cd real-estate-api
    ```
    - Also ensure your `MongoDbSettings` in `appsettings.json` or environment variables contain the DatabaseName key, e.g. `"RealStateDb"`.
 
