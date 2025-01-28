@@ -8,6 +8,6 @@ namespace RealEstateApi.Application.Dtos
         public string Name { get; set; } = null!;
         public string Address { get; set; } = null!;
         public decimal Price { get; set; }
-        public byte[]? FirstImage { get; set; }
+        public string? FirstImage { get; set; }
     }
 }

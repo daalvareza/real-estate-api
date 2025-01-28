@@ -19,7 +19,7 @@ namespace RealEstateApi.Infrastructure.Repositories
         public async Task<PropertyImage?> GetFirstImageAsync(string idProperty)
         {
             var filter = Builders<PropertyImageDataModel>.Filter.And(
-                Builders<PropertyImageDataModel>.Filter.Eq(x => x.Id, idProperty),
+                Builders<PropertyImageDataModel>.Filter.Eq(x => x.IdProperty, idProperty),
                 Builders<PropertyImageDataModel>.Filter.Eq(x => x.Enabled, true)
             );
 

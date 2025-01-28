@@ -29,7 +29,11 @@ namespace RealEstateApi.Application.Services
             foreach (var property in properties)
             {
                 var owner = await _ownerRepository.GetOwnerByIdAsync(property.IdOwner);
-                var firstImage = await _propertyImageRepository.GetFirstImageAsync(property.Id);
+                var imageEntity = await _propertyImageRepository.GetFirstImageAsync(property.Id);
+
+                var base64Image = imageEntity is not null
+                    ? Convert.ToBase64String(imageEntity.File)
+                    : null;
 
                 result.Add(new PropertyListDto
                 {
@@ -39,12 +43,13 @@ namespace RealEstateApi.Application.Services
                     Name = property.Name,
                     Address = property.Address,
                     Price = property.Price,
-                    FirstImage = firstImage?.File
+                    FirstImage = base64Image
                 });
             }
 
             return result;
         }
+
 
         public async Task<string> CreatePropertyAsync(PropertyCreateDto createDto)
         {
