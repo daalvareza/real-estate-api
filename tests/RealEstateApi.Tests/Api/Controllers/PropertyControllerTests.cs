@@ -40,7 +40,11 @@ namespace RealEstateApi.Tests.Api.Controllers
             var filter = new PropertyFilterDto();
             var properties = new List<PropertyListDto> { new PropertyListDto { IdProperty = "1" } };
             _mockPropertyService.Setup(s => s.GetFilteredPropertiesAsync(filter))
-                .ReturnsAsync(properties);
+                .ReturnsAsync(new PaginatedPropertiesDto
+                {
+                    TotalCount = 1,
+                    Properties = properties
+                });
 
             // Act
             var result = await _controller.Get(filter);
@@ -61,7 +65,11 @@ namespace RealEstateApi.Tests.Api.Controllers
             };
 
             _mockPropertyService.Setup(s => s.GetFilteredPropertiesAsync(It.IsAny<PropertyFilterDto>()))
-                .ReturnsAsync(properties);
+                .ReturnsAsync(new PaginatedPropertiesDto
+                {
+                    TotalCount = 1,
+                    Properties = properties
+                });
 
             // Act
             var result = await _controller.GetPropertyById(id);
@@ -78,7 +86,11 @@ namespace RealEstateApi.Tests.Api.Controllers
             // Arrange
             var id = "1";
             _mockPropertyService.Setup(s => s.GetFilteredPropertiesAsync(It.IsAny<PropertyFilterDto>()))
-                .ReturnsAsync(new List<PropertyListDto>());
+                .ReturnsAsync(new PaginatedPropertiesDto
+                {
+                    TotalCount = 0,
+                    Properties = new List<PropertyListDto>()
+                });
 
             // Act
             var result = await _controller.GetPropertyById(id);

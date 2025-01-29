@@ -43,7 +43,7 @@ namespace RealEstateApi.Tests.Application.Services
             var image = new PropertyImage { Id = "image1", File = new byte[] { 1, 2, 3 } };
 
             _mockPropertyRepository.Setup(repo => repo.GetFilteredPropertiesAsync(filterDto))
-                                .ReturnsAsync(properties);
+                                .ReturnsAsync((properties, 1));
             _mockOwnerRepository.Setup(repo => repo.GetOwnerByIdAsync("owner1"))
                                 .ReturnsAsync(owner);
             _mockPropertyImageRepository.Setup(repo => repo.GetFirstImageAsync("1"))
@@ -54,10 +54,10 @@ namespace RealEstateApi.Tests.Application.Services
 
             // Assert
             Assert.NotNull(result);
-            Assert.Single(result);
-            Assert.Equal("Test Property", result.First().Name);
-            Assert.Equal("Owner Name", result.First().OwnerName);
-            Assert.Equal(new byte[] { 1, 2, 3 }, result.First().FirstImage);
+            Assert.Single(result.Properties);
+            Assert.Equal("Test Property", result.Properties.First().Name);
+            Assert.Equal("Owner Name", result.Properties.First().OwnerName);
+            Assert.Equal(Convert.ToBase64String(new byte[] { 1, 2, 3 }), result.Properties.First().FirstImage);
         }
 
         [Fact]

@@ -85,12 +85,14 @@ namespace RealEstateApi.Tests.Infrastructure.Repositories
             var result = await _propertyRepository.GetFilteredPropertiesAsync(filterDto);
 
             // Assert
-            Assert.NotNull(result);
-            var properties = new List<Property>(result);
-            Assert.Single(properties);
-            Assert.Equal("prop1", properties[0].Id);
-            Assert.Equal("Test Property", properties[0].Name);
-            Assert.Equal("123 Ave", properties[0].Address);
+            var (properties, total) = result;
+            Assert.NotNull(total);
+            Assert.NotNull(properties);
+            var propertiesList = new List<Property>(properties);
+            Assert.Single(propertiesList);
+            Assert.Equal("prop1", propertiesList[0].Id);
+            Assert.Equal("Test Property", propertiesList[0].Name);
+            Assert.Equal("123 Ave", propertiesList[0].Address);
         }
 
         [Fact]
