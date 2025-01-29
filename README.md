@@ -69,7 +69,7 @@ A **.NET** Web API that demonstrates CRUD operations and authentication for real
 1. **Clone** the repository:
 
    ```bash
-   git clone https://github.com/YourUsername/real-estate-api.git
+   git clone https://github.com/daalvareza/real-estate-api.git
    cd real-estate-api
    ```
    - Also ensure your `MongoDbSettings` in `appsettings.json` or environment variables contain the DatabaseName key, e.g. `"RealStateDb"`.
