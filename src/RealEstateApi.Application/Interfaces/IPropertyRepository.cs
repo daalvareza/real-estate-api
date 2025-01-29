@@ -5,7 +5,7 @@ namespace RealEstateApi.Application.Interfaces
 {
     public interface IPropertyRepository
     {
-        Task<IEnumerable<Property>> GetFilteredPropertiesAsync(PropertyFilterDto filter);
+        Task<(IEnumerable<Property> properties, long totalCount)> GetFilteredPropertiesAsync(PropertyFilterDto filter);
 
         Task<Property?> GetByIdAsync(string idProperty);
 

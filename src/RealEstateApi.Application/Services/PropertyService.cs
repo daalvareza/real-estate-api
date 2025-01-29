@@ -21,9 +21,9 @@ namespace RealEstateApi.Application.Services
             _propertyImageRepository = propertyImageRepository;
         }
 
-        public async Task<IEnumerable<PropertyListDto>> GetFilteredPropertiesAsync(PropertyFilterDto filterDto)
+        public async Task<PaginatedPropertiesDto> GetFilteredPropertiesAsync(PropertyFilterDto filterDto)
         {
-            var properties = await _propertyRepository.GetFilteredPropertiesAsync(filterDto);
+            var (properties, total) = await _propertyRepository.GetFilteredPropertiesAsync(filterDto);
             var result = new List<PropertyListDto>();
 
             foreach (var property in properties)
@@ -47,7 +47,11 @@ namespace RealEstateApi.Application.Services
                 });
             }
 
-            return result;
+            return new PaginatedPropertiesDto
+            {
+                TotalCount = total,
+                Properties = result
+            };
         }
 
 

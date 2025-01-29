@@ -4,7 +4,7 @@ namespace RealEstateApi.Application.Interfaces
 {
     public interface IPropertyService
     {
-        Task<IEnumerable<PropertyListDto>> GetFilteredPropertiesAsync(PropertyFilterDto filterDto);
+        Task<PaginatedPropertiesDto> GetFilteredPropertiesAsync(PropertyFilterDto filterDto);
 
         Task<string> CreatePropertyAsync(PropertyCreateDto createDto);
 

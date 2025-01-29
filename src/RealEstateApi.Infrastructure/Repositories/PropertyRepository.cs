@@ -21,41 +21,42 @@ namespace RealEstateApi.Infrastructure.Repositories
             _propertyImageCollection = context.GetCollection<PropertyImageDataModel>("PropertyImage");
         }
 
-        public async Task<IEnumerable<Property>> GetFilteredPropertiesAsync(PropertyFilterDto filterDto)
+        public async Task<(IEnumerable<Property> properties, long totalCount)> GetFilteredPropertiesAsync(PropertyFilterDto filterDto)
         {
             var builder = Builders<PropertyDataModel>.Filter;
-            var filters = new List<FilterDefinition<PropertyDataModel>>();
+            var filterDef = builder.Empty;
 
             if (!string.IsNullOrEmpty(filterDto.Name))
             {
-                filters.Add(builder.Regex(x => x.Name, new BsonRegularExpression(filterDto.Name, "i")));
+                filterDef &= builder.Regex(x => x.Name, new BsonRegularExpression(filterDto.Name, "i"));
             }
             if (!string.IsNullOrEmpty(filterDto.Address))
             {
-                filters.Add(builder.Regex(x => x.Address, new BsonRegularExpression(filterDto.Address, "i")));
+                filterDef &= builder.Regex(x => x.Address, new BsonRegularExpression(filterDto.Address, "i"));
             }
             if (filterDto.MinPrice.HasValue)
             {
-                filters.Add(builder.Gte(x => x.Price, filterDto.MinPrice.Value));
+                filterDef &= builder.Gte(x => x.Price, filterDto.MinPrice.Value);
             }
             if (filterDto.MaxPrice.HasValue)
             {
-                filters.Add(builder.Lte(x => x.Price, filterDto.MaxPrice.Value));
+                filterDef &= builder.Lte(x => x.Price, filterDto.MaxPrice.Value);
             }
+            var finalFilter = filterDef.ToBsonDocument().ToJson();
 
-            var finalFilter = filters.Count > 0
-                ? builder.And(filters)
-                : builder.Empty;
+            long totalCount = await _propertyCollection.CountDocumentsAsync(filterDef);
 
             int skip = (filterDto.Page - 1) * filterDto.PageSize;
             int limit = filterDto.PageSize;
 
-            var results = await _propertyCollection.Find(finalFilter)
+            var results = await _propertyCollection.Find(filterDef)
                 .Skip(skip)
                 .Limit(limit)
                 .ToListAsync();
 
-            return results.Select(ToDomainProperty).ToList();
+            var properties = results.Select(ToDomainProperty).ToList();
+
+            return (properties, totalCount);
         }
 
         public async Task<Property?> GetByIdAsync(string id)

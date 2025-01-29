@@ -54,13 +54,13 @@ namespace RealEstateApi.Api.Controllers
         {
             try
             {
-                var propertyListDto = await _propertyService.GetFilteredPropertiesAsync(new PropertyFilterDto
+                var propertyList = await _propertyService.GetFilteredPropertiesAsync(new PropertyFilterDto
                 {
                     Name = null,
                     Address = null
                 });
 
-                var property = propertyListDto.FirstOrDefault(p => p.IdProperty == id);
+                var property = propertyList.Properties.FirstOrDefault(p => p.IdProperty == id);
                 if (property == null)
                     return NotFound();
 
